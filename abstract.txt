@@ -1,0 +1,57 @@
+III CSE Minor Project
+A.Y. 2025-2026
+Date:06-01-2026
+Batch Number: TC1
+Domain / Areas
+
+Artificial Intelligence (AI) & Machine Learning
+
+Title of the Project
+
+InternSwipe: An Artificial Intelligence–Based BehaviorAware Internship Recommendation and Mutual Matching
+Platform for Career Development
+
+Team Leader
+
+1. N.Ajay Kumar – 23R21A05D0
+2. Meena Sri – 23R21A05J9
+3. K.Lokansh Reddy – 23R21A05F9
+4. M.Srithejitha – 23R21A05G5
+
+Team Members Name with Roll No
+Guide Name
+
+Dr. K Gagan Kumar
+
+ABSTRACT:
+In the current digital recruitment ecosystem, students often struggle to find relevant internship opportunities due to
+information overload and inefficient keyword-based matching systems. These limitations lead to poor-quality
+matches, wasted time, and low recruiter response rates, while recruiters face increased effort in screening unsuitable
+applications.
+InternSwipe addresses this issue by introducing an intelligent, swipe-based internship recommendation and
+matching platform. Students and recruiters can express interest through left and right swipe actions, and a match is
+created only when both parties show mutual interest. This approach significantly reduces irrelevant applications
+and improves matching efficiency.
+The platform integrates Artificial Intelligence and Machine Learning techniques, including career trajectory
+analysis to align internships with long-term career goals, skill gap identification to highlight missing skills with
+learning suggestions, and behavior-aware intelligence to analyze swipe patterns and reduce swipe fatigue. The
+system is implemented as a full-stack web application with secure authentication, RESTful APIs, and scalable
+architecture.
+InternSwipe enhances internship discovery by providing personalized, meaningful matches, improving student
+career clarity and recruiter satisfaction, making it suitable for academic and real-world use.
+
+Hardware:
+RAM: At least 4GB, preferably 8GB or more
+Storage: SSDs with at least 20 GB free space
+
+System Requirements
+
+Software:
+OS & Frontend: Windows 11 with HTML, CSS, JavaScript, React.js, and npm
+Backend: Spring Boot (Java 11+) using REST APIs or Node.js and mongodb compass 
+
+Signature of the Guide
+
+Project Coordinator
+
+
