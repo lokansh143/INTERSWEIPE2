@@ -65,9 +65,10 @@ export default function StudentDashboard() {
   ];
 
   return (
-    <section className="card">
+    <section className="card dashboard-container">
       <div className="page-header">
         <div>
+          <p className="welcome-text">Welcome back{profile?.name ? `, ${profile.name}` : ""}! 👋</p>
           <h2>Student Dashboard</h2>
           <p className="muted">Track your progress and manage your profile.</p>
         </div>

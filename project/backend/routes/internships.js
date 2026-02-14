@@ -170,6 +170,171 @@ let inMemoryInternships = [
     description: "Design and deploy scalable cloud infrastructure solutions.",
     recruiterId: "demo",
     createdAt: new Date().toISOString()
+  },
+  {
+    id: "16",
+    title: "AI Research Intern",
+    company: "NeuraTech Labs",
+    location: "Cambridge, MA",
+    stipend: "$2,800 / mo",
+    skills: ["Python", "PyTorch", "NLP", "Deep Learning"],
+    description: "Contribute to groundbreaking research in natural language processing and generative AI.",
+    recruiterId: "demo",
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: "17",
+    title: "Marketing Analytics Intern",
+    company: "GrowthHive",
+    location: "Austin, TX",
+    stipend: "$1,400 / mo",
+    skills: ["Google Analytics", "SQL", "Excel", "Data Visualization"],
+    description: "Analyze marketing campaigns and customer behavior to optimize growth strategies.",
+    recruiterId: "demo",
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: "18",
+    title: "Game Developer Intern",
+    company: "PlayForge Studios",
+    location: "Los Angeles, CA",
+    stipend: "$1,600 / mo",
+    skills: ["Unity", "C#", "3D Modeling", "Game Design"],
+    description: "Help create immersive gaming experiences for mobile and console platforms.",
+    recruiterId: "demo",
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: "19",
+    title: "Financial Technology Intern",
+    company: "FinEdge Capital",
+    location: "New York, NY",
+    stipend: "$2,200 / mo",
+    skills: ["Python", "SQL", "Financial Modeling", "APIs"],
+    description: "Build fintech solutions for trading platforms and payment systems.",
+    recruiterId: "demo",
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: "20",
+    title: "AR/VR Developer Intern",
+    company: "ImmersiveX Labs",
+    location: "San Francisco, CA",
+    stipend: "$2,000 / mo",
+    skills: ["Unity", "C#", "ARKit", "VR Development"],
+    description: "Develop cutting-edge augmented and virtual reality applications.",
+    recruiterId: "demo",
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: "21",
+    title: "Technical Writer Intern",
+    company: "DocuMind",
+    location: "Remote",
+    stipend: "$1,200 / mo",
+    skills: ["Technical Writing", "Markdown", "API Documentation", "Git"],
+    description: "Create clear, user-friendly documentation for developer tools and APIs.",
+    recruiterId: "demo",
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: "22",
+    title: "Database Administrator Intern",
+    company: "DataVault Systems",
+    location: "Dallas, TX",
+    stipend: "$1,700 / mo",
+    skills: ["PostgreSQL", "MySQL", "MongoDB", "Database Optimization"],
+    description: "Manage and optimize database systems for high-performance applications.",
+    recruiterId: "demo",
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: "23",
+    title: "Robotics Engineering Intern",
+    company: "AutoMate Robotics",
+    location: "Detroit, MI",
+    stipend: "$2,300 / mo",
+    skills: ["Python", "ROS", "Computer Vision", "C++"],
+    description: "Work on autonomous systems and robotic process automation.",
+    recruiterId: "demo",
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: "24",
+    title: "IoT Developer Intern",
+    company: "SmartThings Connect",
+    location: "Seattle, WA",
+    stipend: "$1,800 / mo",
+    skills: ["Arduino", "Python", "AWS IoT", "Embedded Systems"],
+    description: "Build connected device solutions for smart home and industrial applications.",
+    recruiterId: "demo",
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: "25",
+    title: "Product Manager Intern",
+    company: "LaunchPad Ventures",
+    location: "San Francisco, CA",
+    stipend: "$2,000 / mo",
+    skills: ["Product Strategy", "Agile", "User Stories", "Roadmapping"],
+    description: "Drive product development from ideation to launch with cross-functional teams.",
+    recruiterId: "demo",
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: "26",
+    title: "Computer Vision Intern",
+    company: "VisionAI Corp",
+    location: "Boston, MA",
+    stipend: "$2,400 / mo",
+    skills: ["Python", "OpenCV", "TensorFlow", "Image Processing"],
+    description: "Develop computer vision algorithms for object detection and image recognition.",
+    recruiterId: "demo",
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: "27",
+    title: "E-Commerce Developer Intern",
+    company: "ShopStream",
+    location: "Remote",
+    stipend: "$1,500 / mo",
+    skills: ["Shopify", "JavaScript", "React", "Payment APIs"],
+    description: "Build and customize e-commerce platforms for online retailers.",
+    recruiterId: "demo",
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: "28",
+    title: "Site Reliability Engineering Intern",
+    company: "UptimePro",
+    location: "Austin, TX",
+    stipend: "$2,100 / mo",
+    skills: ["Kubernetes", "Prometheus", "Go", "Site Reliability"],
+    description: "Ensure system reliability and implement monitoring solutions at scale.",
+    recruiterId: "demo",
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: "29",
+    title: "Natural Language Processing Intern",
+    company: "LinguaAI",
+    location: "Remote",
+    stipend: "$2,200 / mo",
+    skills: ["Python", "Hugging Face", "BERT", "Text Mining"],
+    description: "Build NLP models for sentiment analysis, chatbots, and text classification.",
+    recruiterId: "demo",
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: "30",
+    title: "Healthcare Tech Intern",
+    company: "MedTech Innovations",
+    location: "Philadelphia, PA",
+    stipend: "$1,900 / mo",
+    skills: ["Python", "HIPAA", "Healthcare APIs", "Data Privacy"],
+    description: "Develop technology solutions to improve patient care and healthcare operations.",
+    recruiterId: "demo",
+    createdAt: new Date().toISOString()
   }
 ];
 

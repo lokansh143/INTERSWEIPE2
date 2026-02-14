@@ -1,5 +1,6 @@
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import { useAuth } from "./contexts/AuthContext.jsx";
+import { useTheme } from "./contexts/ThemeContext.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import Signup from "./pages/Signup.jsx";
@@ -15,6 +16,7 @@ import PrivateRoute from "./components/PrivateRoute.jsx";
 
 export default function App() {
   const { user, logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -33,6 +35,13 @@ export default function App() {
           {user && <span className="tag">{user.role || "student"}</span>}
         </div>
         <nav className="nav">
+          <button
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+          >
+            {theme === "light" ? "🌙" : "☀️"}
+          </button>
           {user ? (
             <>
               <Link to={homePath}>Dashboard</Link>

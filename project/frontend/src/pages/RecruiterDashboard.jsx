@@ -52,9 +52,10 @@ export default function RecruiterDashboard() {
   };
 
   return (
-    <section className="card">
+    <section className="card dashboard-container">
       <div className="page-header">
         <div>
+          <p className="welcome-text">Welcome back! 👋</p>
           <h2>Recruiter Dashboard</h2>
           <p className="muted">Manage postings, review talent, and track outreach.</p>
         </div>
