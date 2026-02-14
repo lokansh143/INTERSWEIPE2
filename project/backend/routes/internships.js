@@ -344,7 +344,10 @@ router.get("/", async (req, res) => {
     const db = req.app.locals.mongo;
     if (db) {
       const internships = await db.collection("internships").find({}).toArray();
-      return res.json({ internships: internships.map(doc => ({ ...doc, id: doc._id.toString() })) });
+      // If MongoDB has data, use it; otherwise fall back to in-memory data
+      if (internships.length > 0) {
+        return res.json({ internships: internships.map(doc => ({ ...doc, id: doc._id.toString() })) });
+      }
     }
     res.json({ internships: inMemoryInternships });
   } catch (error) {

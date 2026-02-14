@@ -102,6 +102,28 @@ router.post("/login", async (req, res) => {
       return res.status(400).json({ error: "Email and password are required" });
     }
 
+    // Check demo accounts FIRST (before MongoDB)
+    const demoMatch = demoAccounts.find(
+      (demo) => demo.email.toLowerCase() === email.toLowerCase() && demo.password === password
+    );
+
+    if (demoMatch) {
+      const token = jwt.sign(
+        { email: demoMatch.email, role: demoMatch.role },
+        process.env.JWT_SECRET || "dev_secret",
+        { expiresIn: "24h" }
+      );
+
+      return res.json({
+        token,
+        user: {
+          email: demoMatch.email,
+          name: demoMatch.name,
+          role: demoMatch.role
+        }
+      });
+    }
+
     const db = req.app.locals.mongo;
 
     if (db) {
@@ -132,28 +154,6 @@ router.post("/login", async (req, res) => {
           }
         });
       }
-    }
-
-    // Check demo accounts as fallback
-    const demoMatch = demoAccounts.find(
-      (demo) => demo.email === email && demo.password === password
-    );
-
-    if (demoMatch) {
-      const token = jwt.sign(
-        { email: demoMatch.email, role: demoMatch.role },
-        process.env.JWT_SECRET || "dev_secret",
-        { expiresIn: "24h" }
-      );
-
-      return res.json({
-        token,
-        user: {
-          email: demoMatch.email,
-          name: demoMatch.name,
-          role: demoMatch.role
-        }
-      });
     }
 
     return res.status(401).json({ error: "Invalid credentials" });
