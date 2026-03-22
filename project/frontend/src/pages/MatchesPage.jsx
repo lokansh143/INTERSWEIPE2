@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext.jsx";
 
 const API_BASE = "http://localhost:5000/api";
+const CHAT_API = "http://localhost:5000/api/chat";
 
 export default function MatchesPage() {
   const { user } = useAuth();
@@ -9,6 +11,8 @@ export default function MatchesPage() {
   const [loading, setLoading] = useState(true);
   const [selectedMatch, setSelectedMatch] = useState(null);
   const [filter, setFilter] = useState("all");
+  const [startingChatId, setStartingChatId] = useState(null);
+  const navigate = useNavigate();
 
   const isRecruiter = user?.role === "recruiter";
 
@@ -79,6 +83,33 @@ export default function MatchesPage() {
     if (selectedMatch?.id === matchId) setSelectedMatch(null);
   };
 
+  const handleStartChat = async (match) => {
+    try {
+      setStartingChatId(match.id);
+      const senderId = user?.id || user?.email || "student-demo";
+      const senderName = user?.name || user?.email || "Student";
+      const senderRole = user?.role || "student";
+      const intro = `Hi ${match.company} team, this is ${senderName}. I'm excited about the ${match.internshipTitle} role!`;
+
+      const response = await fetch(`${CHAT_API}/match/${match.id}/start`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ senderId, senderName, senderRole, message: intro })
+      });
+
+      if (!response.ok) {
+        throw new Error("Unable to start chat");
+      }
+
+      navigate(`/chat/${match.id}`);
+    } catch (err) {
+      console.error(err);
+      alert(err.message || "Could not start the conversation. Try again.");
+    } finally {
+      setStartingChatId(null);
+    }
+  };
+
   const filteredMatches = matches.filter(m => {
     if (filter === "all") return true;
     if (filter === "high") return m.score >= 70;
@@ -125,6 +156,16 @@ export default function MatchesPage() {
                 <h4>{match.internshipTitle}</h4>
                 <p className="muted">{match.company}</p>
                 <span className="tag accent">{match.score}% match</span>
+                <div style={{ marginTop: "12px" }}>
+                  <button
+                    className="button secondary"
+                    type="button"
+                    onClick={() => handleStartChat(match)}
+                    disabled={startingChatId === match.id}
+                  >
+                    {startingChatId === match.id ? "Opening chat…" : "Message recruiter"}
+                  </button>
+                </div>
               </div>
             ))}
           </div>

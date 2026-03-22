@@ -1,4 +1,6 @@
 const express = require("express");
+const { randomUUID } = require("crypto");
+const ChatMessage = require("../models/ChatMessage");
 
 const router = express.Router();
 
@@ -112,6 +114,26 @@ function generateAIResponse(message, userRole) {
 
 // Chat history storage (in-memory for demo)
 let chatHistories = {};
+let matchChats = {};
+
+const ensureConversation = (matchId) => {
+  if (!matchChats[matchId]) {
+    matchChats[matchId] = {
+      matchId,
+      messages: [],
+      startedAt: new Date().toISOString()
+    };
+  }
+  return matchChats[matchId];
+};
+
+const nextId = () => {
+  try {
+    return randomUUID();
+  } catch (err) {
+    return Date.now().toString(36);
+  }
+};
 
 // Get chat history
 router.get("/ai/history/:userId", (req, res) => {
@@ -165,9 +187,65 @@ router.delete("/ai/history/:userId", (req, res) => {
   res.json({ success: true });
 });
 
-// Legacy endpoint - match chat
-router.get("/:matchId", (req, res) => {
-  res.json({ messages: [], matchId: req.params.matchId });
+// Student ↔ recruiter conversations
+router.get("/match/:matchId", (req, res) => {
+  const { matchId } = req.params;
+  const conversation = ensureConversation(matchId);
+  res.json({ matchId, messages: conversation.messages });
+});
+
+router.post("/match/:matchId/message", (req, res) => {
+  const { matchId } = req.params;
+  const { senderId, senderName, senderRole, message } = req.body;
+
+  if (!senderId || !senderRole || !message) {
+    return res.status(400).json({ error: "senderId, senderRole, and message are required" });
+  }
+
+  const conversation = ensureConversation(matchId);
+  const chatMessage = new ChatMessage({
+    id: nextId(),
+    matchId,
+    senderId,
+    senderName: senderName || "Unknown",
+    senderRole,
+    message,
+    createdAt: new Date().toISOString()
+  });
+
+  conversation.messages.push(chatMessage);
+  res.status(201).json({ message: chatMessage, messages: conversation.messages });
+});
+
+router.post("/match/:matchId/start", (req, res) => {
+  const { matchId } = req.params;
+  const { senderId, senderName, senderRole, message } = req.body;
+
+  if (!senderId || !senderRole) {
+    return res.status(400).json({ error: "senderId and senderRole are required" });
+  }
+
+  const conversation = ensureConversation(matchId);
+  if (conversation.messages.length > 0) {
+    return res.json({ matchId, messages: conversation.messages });
+  }
+
+  const starterText = message && message.trim() !== ""
+    ? message
+    : "Hi there! Thanks for matching—looking forward to chatting.";
+
+  const chatMessage = new ChatMessage({
+    id: nextId(),
+    matchId,
+    senderId,
+    senderName: senderName || "Unknown",
+    senderRole,
+    message: starterText,
+    createdAt: new Date().toISOString()
+  });
+
+  conversation.messages.push(chatMessage);
+  res.status(201).json({ message: chatMessage, messages: conversation.messages });
 });
 
 module.exports = router;
