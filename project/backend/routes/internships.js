@@ -375,6 +375,7 @@ router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const db = req.app.locals.mongo;
+
     if (db) {
       const internship = await db.collection("internships").findOne({ _id: new ObjectId(id) });
       if (!internship) return res.status(404).json({ error: "Internship not found" });
